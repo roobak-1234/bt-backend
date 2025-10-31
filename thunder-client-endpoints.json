@@ -1,0 +1,935 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Budget Tracker API",
+  "dateExported": "2024-01-15T10:00:00.000Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "id": "auth-folder",
+      "name": "Authentication",
+      "containerId": "",
+      "created": "2024-01-15T10:00:00.000Z",
+      "sortNum": 10000
+    },
+    {
+      "id": "users-folder", 
+      "name": "Users",
+      "containerId": "",
+      "created": "2024-01-15T10:00:00.000Z",
+      "sortNum": 20000
+    },
+    {
+      "id": "budgets-folder",
+      "name": "Budgets", 
+      "containerId": "",
+      "created": "2024-01-15T10:00:00.000Z",
+      "sortNum": 30000
+    },
+    {
+      "id": "expenses-folder",
+      "name": "Expenses",
+      "containerId": "",
+      "created": "2024-01-15T10:00:00.000Z", 
+      "sortNum": 40000
+    },
+    {
+      "id": "categories-folder",
+      "name": "Categories",
+      "containerId": "",
+      "created": "2024-01-15T10:00:00.000Z",
+      "sortNum": 50000
+    },
+    {
+      "id": "budget-entries-folder",
+      "name": "Budget Entries",
+      "containerId": "",
+      "created": "2024-01-15T10:00:00.000Z",
+      "sortNum": 60000
+    },
+    {
+      "id": "admin-folder",
+      "name": "Admin",
+      "containerId": "",
+      "created": "2024-01-15T10:00:00.000Z",
+      "sortNum": 70000
+    }
+  ],
+  "requests": [
+    {
+      "id": "auth-signin",
+      "name": "Sign In",
+      "url": "http://localhost:8080/api/auth/signin",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"password123\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "auth-folder"
+    },
+    {
+      "id": "auth-signup",
+      "name": "Sign Up",
+      "url": "http://localhost:8080/api/auth/signup",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"newuser\",\n  \"email\": \"newuser@example.com\",\n  \"password\": \"password123\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"currency\": \"USD\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "auth-folder"
+    },
+    {
+      "id": "auth-signup-admin",
+      "name": "Sign Up Admin",
+      "url": "http://localhost:8080/api/auth/signup-admin",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"admin\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin123\",\n  \"firstName\": \"Admin\",\n  \"lastName\": \"User\",\n  \"currency\": \"USD\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "auth-folder"
+    },
+    {
+      "id": "auth-update-profile",
+      "name": "Update Profile",
+      "url": "http://localhost:8080/api/auth/profile",
+      "method": "PUT",
+      "sortNum": 40000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"firstName\": \"Updated John\",\n  \"lastName\": \"Updated Doe\",\n  \"email\": \"updated@example.com\",\n  \"currency\": \"EUR\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "auth-folder"
+    },
+    {
+      "id": "auth-reset-password",
+      "name": "Reset Password",
+      "url": "http://localhost:8080/api/auth/reset-password",
+      "method": "POST",
+      "sortNum": 50000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"user@example.com\",\n  \"newPassword\": \"newpassword123\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "auth-folder"
+    },
+    {
+      "id": "budgets-get-all",
+      "name": "Get All Budgets",
+      "url": "http://localhost:8080/api/budgets",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budgets-folder"
+    },
+    {
+      "id": "budgets-get-by-id",
+      "name": "Get Budget by ID",
+      "url": "http://localhost:8080/api/budgets/1",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budgets-folder"
+    },
+    {
+      "id": "budgets-create",
+      "name": "Create Budget",
+      "url": "http://localhost:8080/api/budgets",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Monthly Budget\",\n  \"allocatedAmount\": 2500.00,\n  \"startDate\": \"2024-01-01\",\n  \"endDate\": \"2024-01-31\",\n  \"budgetType\": \"monthly\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budgets-folder"
+    },
+    {
+      "id": "budgets-update",
+      "name": "Update Budget",
+      "url": "http://localhost:8080/api/budgets/1",
+      "method": "PUT",
+      "sortNum": 40000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Updated Monthly Budget\",\n  \"allocatedAmount\": 3000.00,\n  \"startDate\": \"2024-01-01\",\n  \"endDate\": \"2024-01-31\",\n  \"budgetType\": \"monthly\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budgets-folder"
+    },
+    {
+      "id": "budgets-delete",
+      "name": "Delete Budget",
+      "url": "http://localhost:8080/api/budgets/1",
+      "method": "DELETE",
+      "sortNum": 50000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budgets-folder"
+    },
+    {
+      "id": "expenses-create",
+      "name": "Create Expense",
+      "url": "http://localhost:8080/api/expenses",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"amount\": 45.50,\n  \"description\": \"Grocery shopping\",\n  \"date\": \"2024-01-15\",\n  \"categoryName\": \"Food & Dining\",\n  \"paymentMethod\": \"Credit Card\",\n  \"receiptUrl\": \"https://example.com/receipt.jpg\",\n  \"isRecurring\": false\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "expenses-folder"
+    },
+    {
+      "id": "expenses-get-all",
+      "name": "Get All Expenses",
+      "url": "http://localhost:8080/api/expenses",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "expenses-folder"
+    },
+    {
+      "id": "expenses-update",
+      "name": "Update Expense",
+      "url": "http://localhost:8080/api/expenses/1",
+      "method": "PUT",
+      "sortNum": 30000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"amount\": 55.75,\n  \"description\": \"Updated grocery shopping\",\n  \"date\": \"2024-01-15\",\n  \"categoryName\": \"Food & Dining\",\n  \"paymentMethod\": \"Debit Card\",\n  \"receiptUrl\": \"https://example.com/updated-receipt.jpg\",\n  \"isRecurring\": false\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "expenses-folder"
+    },
+    {
+      "id": "expenses-delete",
+      "name": "Delete Expense",
+      "url": "http://localhost:8080/api/expenses/1",
+      "method": "DELETE",
+      "sortNum": 40000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "expenses-folder"
+    },
+    {
+      "id": "categories-create",
+      "name": "Create Category",
+      "url": "http://localhost:8080/api/categories",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Transportation\",\n  \"description\": \"Car, bus, taxi expenses\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "categories-folder"
+    },
+    {
+      "id": "categories-get-all",
+      "name": "Get All Categories",
+      "url": "http://localhost:8080/api/categories",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "categories-folder"
+    },
+    {
+      "id": "budget-entries-create",
+      "name": "Create Budget Entry",
+      "url": "http://localhost:8080/api/budget",
+      "method": "POST",
+      "sortNum": 10000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"amount\": 150.00,\n  \"amounttype\": \"expense\",\n  \"category\": \"Food & Dining\",\n  \"description\": \"Weekly groceries\",\n  \"date\": \"2024-01-15\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budget-entries-folder"
+    },
+    {
+      "id": "budget-entries-get-all",
+      "name": "Get All Budget Entries",
+      "url": "http://localhost:8080/api/budget",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budget-entries-folder"
+    },
+    {
+      "id": "budget-entries-get-by-category",
+      "name": "Get Budget Entries by Category",
+      "url": "http://localhost:8080/api/budget/category/Food & Dining",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budget-entries-folder"
+    },
+    {
+      "id": "budget-entries-get-by-id",
+      "name": "Get Budget Entry by ID",
+      "url": "http://localhost:8080/api/budget/1",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budget-entries-folder"
+    },
+    {
+      "id": "budget-entries-update",
+      "name": "Update Budget Entry",
+      "url": "http://localhost:8080/api/budget/1",
+      "method": "PUT",
+      "sortNum": 50000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"amount\": 175.00,\n  \"amounttype\": \"expense\",\n  \"category\": \"Food & Dining\",\n  \"description\": \"Updated weekly groceries\",\n  \"date\": \"2024-01-15\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budget-entries-folder"
+    },
+    {
+      "id": "budget-entries-delete",
+      "name": "Delete Budget Entry",
+      "url": "http://localhost:8080/api/budget/1",
+      "method": "DELETE",
+      "sortNum": 60000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "budget-entries-folder"
+    },
+    {
+      "id": "admin-get-users",
+      "name": "Get All Users (Admin)",
+      "url": "http://localhost:8080/api/admin/users",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-dashboard-stats",
+      "name": "Get Dashboard Stats (Admin)",
+      "url": "http://localhost:8080/api/admin/dashboard-stats",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-get-categories",
+      "name": "Get All Categories (Admin)",
+      "url": "http://localhost:8080/api/admin/categories",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-suspend-user",
+      "name": "Suspend User (Admin)",
+      "url": "http://localhost:8080/api/admin/users/1/suspend",
+      "method": "PUT",
+      "sortNum": 40000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-activate-user",
+      "name": "Activate User (Admin)",
+      "url": "http://localhost:8080/api/admin/users/1/activate",
+      "method": "PUT",
+      "sortNum": 50000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-delete-user",
+      "name": "Delete User (Admin)",
+      "url": "http://localhost:8080/api/admin/users/1",
+      "method": "DELETE",
+      "sortNum": 60000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-get-user-details",
+      "name": "Get User Details (Admin)",
+      "url": "http://localhost:8080/api/admin/users/1",
+      "method": "GET",
+      "sortNum": 70000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-update-user",
+      "name": "Update User (Admin)",
+      "url": "http://localhost:8080/api/admin/users/1",
+      "method": "PUT",
+      "sortNum": 80000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"firstName\": \"Updated First Name\",\n  \"lastName\": \"Updated Last Name\",\n  \"email\": \"updated@example.com\",\n  \"currency\": \"EUR\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-reset-user-password",
+      "name": "Reset User Password (Admin)",
+      "url": "http://localhost:8080/api/admin/users/1/reset-password",
+      "method": "POST",
+      "sortNum": 90000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"newPassword\": \"newpassword123\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-create-category",
+      "name": "Create Category (Admin)",
+      "url": "http://localhost:8080/api/admin/categories",
+      "method": "POST",
+      "sortNum": 100000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Entertainment\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-update-category",
+      "name": "Update Category (Admin)",
+      "url": "http://localhost:8080/api/admin/categories/1",
+      "method": "PUT",
+      "sortNum": 110000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Updated Entertainment\"\n}",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-delete-category",
+      "name": "Delete Category (Admin)",
+      "url": "http://localhost:8080/api/admin/categories/1",
+      "method": "DELETE",
+      "sortNum": 120000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-get-analytics",
+      "name": "Get Analytics (Admin)",
+      "url": "http://localhost:8080/api/admin/analytics",
+      "method": "GET",
+      "sortNum": 130000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    },
+    {
+      "id": "admin-seed-data",
+      "name": "Seed Test Data (Admin)",
+      "url": "http://localhost:8080/api/admin/seed-data",
+      "method": "POST",
+      "sortNum": 140000,
+      "created": "2024-01-15T10:00:00.000Z",
+      "modified": "2024-01-15T10:00:00.000Z",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{admin_jwt_token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "",
+        "form": []
+      },
+      "tests": [],
+      "containerId": "admin-folder"
+    }
+  ]
+}
